@@ -9,6 +9,7 @@ export type ConversationState =
   | 'RESOLVED';
 
 export type Intent =
+  | 'SHIPPING'
   | 'ORDER_TRACKING'
   | 'RETURNS'
   | 'PRODUCT_RECOMMENDATION'

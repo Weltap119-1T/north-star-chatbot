@@ -9,6 +9,7 @@ const MAIN_MENU_OPTIONS = [
   '📦 Track my order',
   '🔄 Returns & exchanges',
   '🏕️ Product recommendations',
+  '🚚 Shipping information',
   '🧑 Talk to a human',
 ];
 
@@ -118,6 +119,18 @@ function handleIdle(session: Session, text: string): ChatResponse {
         "I'd love to help you find the right gear! 🏕️ What activity are you shopping for?",
         'AWAITING_PRODUCT_USE',
         ['Hiking / Trekking', 'Camping', 'Climbing', 'Winter sports', 'Something else']
+      );
+
+    case 'SHIPPING':
+      return respond(
+        session,
+        "We offer two shipping options:\n\n" +
+          "📦 **Standard**: 3–5 business days\n" +
+          "⚡ **Expedited**: 1–2 business days\n\n" +
+          "Expedited shipping is available at checkout. " +
+          "Is there anything else I can help you with?",
+        'RESOLVED',
+        ['Track my order', 'Back to menu']
       );
 
     case 'HUMAN_HANDOFF':

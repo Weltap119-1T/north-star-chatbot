@@ -1,6 +1,9 @@
 import { Intent } from '../types';
 
 const PATTERNS: Record<Intent, RegExp[]> = {
+  SHIPPING: [
+    /\b(ship|shipping|delivery|deliver|how long|when will|arrive|arrival|dispatch|postage|standard|expedited|express|fast)\b/i,
+  ],
   ORDER_TRACKING: [
     /\b(order|package|parcel|shipment|delivery|track|where.*(my|is)|status)\b/i,
     /\b(arrived|shipped|shipping|dispatch|dispatched)\b/i,
@@ -40,7 +43,7 @@ export function extractOrderNumber(message: string): string | null {
 }
 
 export function extractActivityKeyword(message: string): string {
-  if (/\b(hik|trek|trail|walk)\b/i.test(message)) return 'hiking';
+  if (/\b(hiking|hike|trekking|trek|trail|walk)\b/i.test(message)) return 'hiking';
   if (/\b(camp|backpack|outdoor sleep)\b/i.test(message)) return 'camping';
   if (/\b(climb|boulder|mountain)\b/i.test(message)) return 'climbing';
   if (/\b(winter|snow|ski|cold)\b/i.test(message)) return 'winter';
